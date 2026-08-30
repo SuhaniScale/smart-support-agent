@@ -21,7 +21,7 @@ from sklearn.metrics.pairwise import cosine_distances
 # The genai Client automatically finds and uses those credentials.
 # ============================================================
 
-repo_root = Path(__file__).resolve().parent
+repo_root = Path(__file__).resolve().parent.parent  # Go to project root
 dotenv_path = repo_root / ".env"
 load_dotenv(dotenv_path)
 

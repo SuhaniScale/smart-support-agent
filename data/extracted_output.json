@@ -28,7 +28,7 @@
     "issue_type": "Billing Error",
     "urgency": "high",
     "region": "unspecified",
-    "summary": "User reported a duplicate charge for their monthly subscription.",
+    "summary": "Customer reported a duplicate charge for their monthly subscription.",
     "ticket_id": "T004"
   },
   {
@@ -36,7 +36,7 @@
     "issue_type": "Billing Error",
     "urgency": "high",
     "region": "unspecified",
-    "summary": "Customer reported a double billing issue on their credit card and is requesting a refund for the duplicate charge.",
+    "summary": "Customer reported a double billing error on their credit card and is requesting a refund for the duplicate charge.",
     "ticket_id": "T005"
   },
   {
@@ -108,7 +108,7 @@
     "issue_type": "Access Issue",
     "urgency": "medium",
     "region": "unspecified",
-    "summary": "User is unable to reset their password because the reset email was not received.",
+    "summary": "User is unable to reset password because the reset email was not received.",
     "ticket_id": "T014"
   },
   {
@@ -148,7 +148,7 @@
     "issue_type": "Crash",
     "urgency": "high",
     "region": "unspecified",
-    "summary": "The application crashes upon attempting to attach an image from the device gallery.",
+    "summary": "The mobile application crashes upon attempting to attach an image from the device gallery.",
     "ticket_id": "T019"
   },
   {

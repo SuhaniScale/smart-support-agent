@@ -37,7 +37,7 @@ if not PROJECT_ID:
     raise EnvironmentError("GCP_PROJECT_ID is not set. Add it to .env or export it before running the script.")
 
 # CHANGE THIS to the exact bucket name you created in Step 2.2
-BUCKET_NAME = "epc-platform-507008-embeddings"
+BUCKET_NAME = "epc-platform-506918-embeddings"
 
 BASE_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = BASE_DIR.parent
