@@ -1,0 +1,70 @@
+[
+  {
+    "cluster_id": "C001",
+    "ticket_count": 4,
+    "ticket_ids": [
+      "T001",
+      "T002",
+      "T003",
+      "T011"
+    ]
+  },
+  {
+    "cluster_id": "C002",
+    "ticket_count": 4,
+    "ticket_ids": [
+      "T004",
+      "T005",
+      "T012",
+      "T018"
+    ]
+  },
+  {
+    "cluster_id": "C003",
+    "ticket_count": 3,
+    "ticket_ids": [
+      "T006",
+      "T007",
+      "T013"
+    ]
+  },
+  {
+    "cluster_id": "C004",
+    "ticket_count": 2,
+    "ticket_ids": [
+      "T008",
+      "T014"
+    ]
+  },
+  {
+    "cluster_id": "C005",
+    "ticket_count": 3,
+    "ticket_ids": [
+      "T009",
+      "T010",
+      "T015"
+    ]
+  },
+  {
+    "cluster_id": "C006",
+    "ticket_count": 2,
+    "ticket_ids": [
+      "T016",
+      "T017"
+    ]
+  },
+  {
+    "cluster_id": "C007",
+    "ticket_count": 1,
+    "ticket_ids": [
+      "T019"
+    ]
+  },
+  {
+    "cluster_id": "C008",
+    "ticket_count": 1,
+    "ticket_ids": [
+      "T020"
+    ]
+  }
+]

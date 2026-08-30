@@ -1,0 +1,122 @@
+[
+  {
+    "ticket_id": "T001",
+    "raw_text": "App keeps crashing when I try to upload photos on Android",
+    "source": "email",
+    "timestamp": "2026-01-05T09:12:00Z"
+  },
+  {
+    "ticket_id": "T002",
+    "raw_text": "Cannot upload pictures, the app just freezes and closes",
+    "source": "chat",
+    "timestamp": "2026-01-05T10:45:00Z"
+  },
+  {
+    "ticket_id": "T003",
+    "raw_text": "Photo upload fails every single time on my phone",
+    "source": "web_form",
+    "timestamp": "2026-01-05T11:30:00Z"
+  },
+  {
+    "ticket_id": "T004",
+    "raw_text": "I was charged twice for my monthly subscription this week",
+    "source": "email",
+    "timestamp": "2026-01-06T08:00:00Z"
+  },
+  {
+    "ticket_id": "T005",
+    "raw_text": "Double billing on my credit card, please refund the extra charge",
+    "source": "phone",
+    "timestamp": "2026-01-06T08:20:00Z"
+  },
+  {
+    "ticket_id": "T006",
+    "raw_text": "Login page shows a blank white screen on Chrome browser",
+    "source": "web_form",
+    "timestamp": "2026-01-06T14:10:00Z"
+  },
+  {
+    "ticket_id": "T007",
+    "raw_text": "I can't log in, the page just stays white and never loads",
+    "source": "chat",
+    "timestamp": "2026-01-06T14:45:00Z"
+  },
+  {
+    "ticket_id": "T008",
+    "raw_text": "Password reset email never arrives in my inbox",
+    "source": "email",
+    "timestamp": "2026-01-07T09:00:00Z"
+  },
+  {
+    "ticket_id": "T009",
+    "raw_text": "The mobile app is extremely slow when loading the dashboard in Europe",
+    "source": "chat",
+    "timestamp": "2026-01-07T16:30:00Z"
+  },
+  {
+    "ticket_id": "T010",
+    "raw_text": "Dashboard takes over a minute to load on my phone in Germany",
+    "source": "web_form",
+    "timestamp": "2026-01-07T17:00:00Z"
+  },
+  {
+    "ticket_id": "T011",
+    "raw_text": "My photos won't upload no matter how many times I try on my Samsung phone",
+    "source": "chat",
+    "timestamp": "2026-01-08T09:15:00Z"
+  },
+  {
+    "ticket_id": "T012",
+    "raw_text": "Getting charged two times a month for the same subscription plan",
+    "source": "email",
+    "timestamp": "2026-01-08T10:00:00Z"
+  },
+  {
+    "ticket_id": "T013",
+    "raw_text": "Blank white screen appears the moment I try to sign in from Firefox",
+    "source": "web_form",
+    "timestamp": "2026-01-08T11:20:00Z"
+  },
+  {
+    "ticket_id": "T014",
+    "raw_text": "Never received the email to reset my forgotten password",
+    "source": "email",
+    "timestamp": "2026-01-08T13:00:00Z"
+  },
+  {
+    "ticket_id": "T015",
+    "raw_text": "Dashboard is painfully slow to load, especially from our UK office",
+    "source": "chat",
+    "timestamp": "2026-01-08T15:40:00Z"
+  },
+  {
+    "ticket_id": "T016",
+    "raw_text": "Export to PDF button does nothing when I click it",
+    "source": "web_form",
+    "timestamp": "2026-01-09T08:30:00Z"
+  },
+  {
+    "ticket_id": "T017",
+    "raw_text": "PDF export feature is completely unresponsive on my end too",
+    "source": "chat",
+    "timestamp": "2026-01-09T09:10:00Z"
+  },
+  {
+    "ticket_id": "T018",
+    "raw_text": "Was billed twice again this month, this is the second time now",
+    "source": "phone",
+    "timestamp": "2026-01-09T10:05:00Z"
+  },
+  {
+    "ticket_id": "T019",
+    "raw_text": "App crashes immediately whenever I attach an image from my gallery",
+    "source": "email",
+    "timestamp": "2026-01-09T12:00:00Z"
+  },
+  {
+    "ticket_id": "T020",
+    "raw_text": "The customer support chat widget never loads on our internal browser",
+    "source": "web_form",
+    "timestamp": "2026-01-09T14:25:00Z"
+  }
+]

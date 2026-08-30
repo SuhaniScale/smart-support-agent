@@ -1,0 +1,162 @@
+[
+  {
+    "product_area": "Mobile App",
+    "issue_type": "Crash",
+    "urgency": "high",
+    "region": "unspecified",
+    "summary": "The mobile application crashes consistently when attempting to upload photos on Android devices.",
+    "ticket_id": "T001"
+  },
+  {
+    "product_area": "Mobile App",
+    "issue_type": "Crash",
+    "urgency": "high",
+    "region": "unspecified",
+    "summary": "The mobile application freezes and crashes when attempting to upload pictures.",
+    "ticket_id": "T002"
+  },
+  {
+    "product_area": "Mobile App",
+    "issue_type": "Performance",
+    "urgency": "medium",
+    "region": "unspecified",
+    "summary": "User is unable to upload photos using the mobile application.",
+    "ticket_id": "T003"
+  },
+  {
+    "product_area": "Billing",
+    "issue_type": "Billing Error",
+    "urgency": "high",
+    "region": "unspecified",
+    "summary": "User reported a duplicate charge for their monthly subscription.",
+    "ticket_id": "T004"
+  },
+  {
+    "product_area": "Billing",
+    "issue_type": "Billing Error",
+    "urgency": "high",
+    "region": "unspecified",
+    "summary": "Customer reported a double billing issue on their credit card and is requesting a refund for the duplicate charge.",
+    "ticket_id": "T005"
+  },
+  {
+    "product_area": "Login",
+    "issue_type": "Access Issue",
+    "urgency": "high",
+    "region": "unspecified",
+    "summary": "Login page displays a blank white screen when accessed via Chrome browser.",
+    "ticket_id": "T006"
+  },
+  {
+    "product_area": "Login",
+    "issue_type": "Access Issue",
+    "urgency": "high",
+    "region": "unspecified",
+    "summary": "User is unable to log in due to a blank white screen that fails to load.",
+    "ticket_id": "T007"
+  },
+  {
+    "product_area": "Login",
+    "issue_type": "Access Issue",
+    "urgency": "high",
+    "region": "unspecified",
+    "summary": "User is unable to reset password because the reset email is not being received.",
+    "ticket_id": "T008"
+  },
+  {
+    "product_area": "Mobile App",
+    "issue_type": "Performance",
+    "urgency": "medium",
+    "region": "Europe",
+    "summary": "Mobile app dashboard loading performance is slow for users in Europe.",
+    "ticket_id": "T009"
+  },
+  {
+    "product_area": "Dashboard",
+    "issue_type": "Performance",
+    "urgency": "medium",
+    "region": "Germany",
+    "summary": "Dashboard loading performance is slow on mobile devices in Germany.",
+    "ticket_id": "T010"
+  },
+  {
+    "product_area": "Mobile App",
+    "issue_type": "Performance",
+    "urgency": "medium",
+    "region": "unspecified",
+    "summary": "User is unable to upload photos from their Samsung mobile device.",
+    "ticket_id": "T011"
+  },
+  {
+    "product_area": "Billing",
+    "issue_type": "Billing Error",
+    "urgency": "high",
+    "region": "unspecified",
+    "summary": "User is reporting being double-charged for their monthly subscription plan.",
+    "ticket_id": "T012"
+  },
+  {
+    "product_area": "Login",
+    "issue_type": "Access Issue",
+    "urgency": "high",
+    "region": "unspecified",
+    "summary": "User experiences a blank white screen when attempting to sign in using the Firefox browser.",
+    "ticket_id": "T013"
+  },
+  {
+    "product_area": "Login",
+    "issue_type": "Access Issue",
+    "urgency": "medium",
+    "region": "unspecified",
+    "summary": "User is unable to reset their password because the reset email was not received.",
+    "ticket_id": "T014"
+  },
+  {
+    "product_area": "Dashboard",
+    "issue_type": "Performance",
+    "urgency": "medium",
+    "region": "UK",
+    "summary": "The dashboard is experiencing significant latency issues for users located in the UK office.",
+    "ticket_id": "T015"
+  },
+  {
+    "product_area": "Dashboard",
+    "issue_type": "Performance",
+    "urgency": "medium",
+    "region": "unspecified",
+    "summary": "The export to PDF functionality is unresponsive when clicked.",
+    "ticket_id": "T016"
+  },
+  {
+    "product_area": "PDF Export",
+    "issue_type": "Performance",
+    "urgency": "medium",
+    "region": "unspecified",
+    "summary": "The PDF export feature is unresponsive for the user.",
+    "ticket_id": "T017"
+  },
+  {
+    "product_area": "Billing",
+    "issue_type": "Billing Error",
+    "urgency": "high",
+    "region": "unspecified",
+    "summary": "Customer reported being double-billed for the second consecutive month.",
+    "ticket_id": "T018"
+  },
+  {
+    "product_area": "Mobile App",
+    "issue_type": "Crash",
+    "urgency": "high",
+    "region": "unspecified",
+    "summary": "The application crashes upon attempting to attach an image from the device gallery.",
+    "ticket_id": "T019"
+  },
+  {
+    "product_area": "Customer Support Chat Widget",
+    "issue_type": "Performance",
+    "urgency": "medium",
+    "region": "unspecified",
+    "summary": "The customer support chat widget fails to load within the internal browser environment.",
+    "ticket_id": "T020"
+  }
+]

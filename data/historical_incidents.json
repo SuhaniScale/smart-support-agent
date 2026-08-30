@@ -1,0 +1,93 @@
+
+[
+  {
+    "incident_id": "H001",
+    "summary": "Users on Android devices were unable to upload photos due to a memory allocation bug in the image compression module.",
+    "outcome": "Resolved by patching the compression library in version 4.2.1.",
+    "date": "2025-06-12"
+  },
+  {
+    "incident_id": "H002",
+    "summary": "A billing system error caused a subset of customers to be charged twice for their monthly subscription.",
+    "outcome": "Resolved by fixing a duplicate webhook trigger in the payment processor integration.",
+    "date": "2025-07-03"
+  },
+  {
+    "incident_id": "H003",
+    "summary": "The login page displayed a blank screen for users on outdated browser versions due to an unsupported JavaScript feature.",
+    "outcome": "Resolved by adding a compatibility fallback for older browsers.",
+    "date": "2025-07-20"
+  },
+  {
+    "incident_id": "H004",
+    "summary": "Password reset emails were delayed or lost due to an overloaded email delivery queue.",
+    "outcome": "Resolved by scaling the email service and adding retry logic.",
+    "date": "2025-08-05"
+  },
+  {
+    "incident_id": "H005",
+    "summary": "European users reported significantly slower dashboard load times during peak hours.",
+    "outcome": "Resolved by deploying a regional caching layer closer to European users.",
+    "date": "2025-08-22"
+  },
+  {
+    "incident_id": "H006",
+    "summary": "PDF export functionality silently failed for documents larger than 10MB.",
+    "outcome": "Resolved by increasing the export service's file size limit and adding a progress indicator.",
+    "date": "2025-09-01"
+  },
+  {
+    "incident_id": "H007",
+    "summary": "A subset of mobile users experienced app crashes when attaching images from their photo gallery.",
+    "outcome": "Resolved by fixing a null pointer exception in the gallery attachment handler.",
+    "date": "2025-09-15"
+  },
+  {
+    "incident_id": "H008",
+    "summary": "The customer support chat widget failed to load for users on certain internal corporate browser configurations.",
+    "outcome": "Resolved by relaxing an overly strict content security policy setting.",
+    "date": "2025-09-28"
+  },
+  {
+    "incident_id": "H009",
+    "summary": "Duplicate charges appeared on customer invoices following a batch billing job retry.",
+    "outcome": "Resolved by adding idempotency keys to the billing job to prevent reprocessing.",
+    "date": "2025-10-10"
+  },
+  {
+    "incident_id": "H010",
+    "summary": "Users reported the app freezing and closing unexpectedly while uploading media files on Android.",
+    "outcome": "Resolved as part of the same fix as H001, released in version 4.2.1.",
+    "date": "2025-10-18"
+  },
+  {
+    "incident_id": "H011",
+    "summary": "A visual bug caused the login screen to appear completely blank on Chrome for a small number of users.",
+    "outcome": "Resolved by fixing a CSS rendering conflict introduced in a recent release.",
+    "date": "2025-11-02"
+  },
+  {
+    "incident_id": "H012",
+    "summary": "Some users never received their password reset email despite requesting it multiple times.",
+    "outcome": "Resolved by identifying and removing a spam filter misclassification on the sending domain.",
+    "date": "2025-11-14"
+  },
+  {
+    "incident_id": "H013",
+    "summary": "Dashboard performance degraded for users accessing the platform from outside North America.",
+    "outcome": "Resolved by expanding content delivery network coverage to additional regions.",
+    "date": "2025-11-25"
+  },
+  {
+    "incident_id": "H014",
+    "summary": "The PDF export button became unresponsive after a recent frontend deployment.",
+    "outcome": "Resolved by rolling back a broken event handler introduced in the deployment.",
+    "date": "2025-12-05"
+  },
+  {
+    "incident_id": "H015",
+    "summary": "Customers were billed twice in the same billing cycle due to a race condition in the subscription renewal process.",
+    "outcome": "Resolved by adding a database lock during renewal processing.",
+    "date": "2025-12-19"
+  }
+]
