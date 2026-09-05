@@ -4,7 +4,7 @@ Meaning Extraction Agent
 Step 1 of the Support Ticket Pipeline.
 
 This module takes a structured dictionary input and extracts structured meaning
-using Gemini 3.1 Flash Lite, enforcing a strict JSON output schema.
+using Gemini 2.5 Flash, enforcing a strict JSON output schema.
 
 It is designed to run on Google Cloud / Vertex AI using a GCP Project ID
 from a .env file instead of an API key.
@@ -35,7 +35,7 @@ if not PROJECT_ID:
     )
 
 # Vertex AI location
-LOCATION = "us"
+LOCATION = os.getenv("GCP_LOCATION", "us-east1")
 
 
 # =====================================================================
@@ -81,7 +81,7 @@ class TicketExtraction(BaseModel):
 def extract_ticket_meaning(ticket_payload: dict) -> dict:
     """
     Takes a support ticket dictionary and extracts key information
-    into a strictly formatted JSON string using Gemini 3.1 Flash Lite.
+    into a strictly formatted JSON string using Gemini 2.5 Flash.
 
     Args:
         ticket_payload (dict): The input dictionary containing
@@ -100,7 +100,7 @@ def extract_ticket_meaning(ticket_payload: dict) -> dict:
     )
 
     # Target the specific lightweight model requested
-    MODEL_ID = "gemini-3.1-flash-lite"
+    MODEL_ID = "gemini-2.5-flash"
 
     # Define our system instructions to set the agent's persona and rules
     system_instruction = (

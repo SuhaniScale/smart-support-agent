@@ -36,7 +36,7 @@
     "issue_type": "Billing Error",
     "urgency": "high",
     "region": "unspecified",
-    "summary": "Customer reported a double billing error on their credit card and is requesting a refund for the duplicate charge.",
+    "summary": "Customer reported a double billing issue on their credit card and requested a refund for the duplicate charge.",
     "ticket_id": "T005"
   },
   {
@@ -44,7 +44,7 @@
     "issue_type": "Access Issue",
     "urgency": "high",
     "region": "unspecified",
-    "summary": "Login page displays a blank white screen when accessed via Chrome browser.",
+    "summary": "User is unable to access the login page due to a blank white screen when using the Chrome browser.",
     "ticket_id": "T006"
   },
   {
@@ -68,7 +68,7 @@
     "issue_type": "Performance",
     "urgency": "medium",
     "region": "Europe",
-    "summary": "Mobile app dashboard loading performance is slow for users in Europe.",
+    "summary": "Mobile app dashboard loading is slow for users in Europe.",
     "ticket_id": "T009"
   },
   {
@@ -108,7 +108,7 @@
     "issue_type": "Access Issue",
     "urgency": "medium",
     "region": "unspecified",
-    "summary": "User is unable to reset password because the reset email was not received.",
+    "summary": "User is unable to reset their password because the reset email is not being received.",
     "ticket_id": "T014"
   },
   {
@@ -116,7 +116,7 @@
     "issue_type": "Performance",
     "urgency": "medium",
     "region": "UK",
-    "summary": "The dashboard is experiencing significant latency issues for users located in the UK office.",
+    "summary": "The dashboard is experiencing slow load times for users in the UK office.",
     "ticket_id": "T015"
   },
   {
@@ -148,7 +148,7 @@
     "issue_type": "Crash",
     "urgency": "high",
     "region": "unspecified",
-    "summary": "The mobile application crashes upon attempting to attach an image from the device gallery.",
+    "summary": "The application crashes upon attempting to attach an image from the device gallery.",
     "ticket_id": "T019"
   },
   {

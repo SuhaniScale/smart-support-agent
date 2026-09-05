@@ -18,7 +18,7 @@ dotenv_path = repo_root / ".env"
 load_dotenv(dotenv_path)
 
 PROJECT_ID = os.getenv("GCP_PROJECT_ID")
-DATABASE_ID = os.getenv("FIRESTORE_DATABASE_ID", "epcfirestoredb")
+DATABASE_ID = os.getenv("FIRESTORE_DATABASE_ID", "epcdb")
 
 if not PROJECT_ID:
     raise RuntimeError("Set GCP_PROJECT_ID in your .env file before running this script.")

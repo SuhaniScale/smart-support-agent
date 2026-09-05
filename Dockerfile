@@ -10,5 +10,5 @@ COPY . .
 ENV PORT=8080
 EXPOSE 8080
 
-CMD ["python", "deployment/admin_panel.py"]
+CMD ["python", "deployment/pipeline_service.py"]
 

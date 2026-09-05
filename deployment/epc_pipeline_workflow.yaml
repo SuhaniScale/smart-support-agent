@@ -1,0 +1,97 @@
+main:
+  params: [input]
+  steps:
+    - init:
+        assign:
+          - service_url: "https://epc-pipeline-service-349051420628.us-east1.run.app"
+          - ticket_id: ${input.ticket_id}
+          - raw_text: ${input.raw_text}
+          - source: ${input.source}
+          - timestamp: ${input.timestamp}
+
+    - extract_step:
+        call: http.post
+        args:
+          url: ${service_url + "/extract"}
+          body:
+            ticket_id: ${ticket_id}
+            raw_text: ${raw_text}
+            source: ${source}
+            timestamp: ${timestamp}
+        result: extract_result
+
+    - making_groups:
+        try:
+          call: http.post
+          args:
+            url: ${service_url + "/cluster"}
+            body:
+              ticket_id: ${ticket_id}
+          result: cluster_result
+        retry:
+          predicate: ${custom_retry_predicate}
+          max_retries: 10
+          backoff:
+            initial_delay: 2
+            max_delay: 120
+            multiplier: 1.5
+
+    - assign_cluster_id:
+        assign:
+          - cluster_id: ${cluster_result.body.cluster_id}
+
+    - score_step:
+        try:
+          call: http.post
+          args:
+            url: ${service_url + "/score"}
+            body:
+              cluster_id: ${cluster_id}
+          result: score_result
+        retry:
+          predicate: ${custom_retry_predicate}
+          max_retries: 10
+          backoff:
+            initial_delay: 2
+            max_delay: 120
+            multiplier: 1.5
+  
+    - prepare_step:
+        try:
+          call: http.post
+          args:
+            url: ${service_url + "/prepare"}
+            body:
+              cluster_id: ${cluster_id}
+          result: prepare_result
+        retry:
+          predicate: ${custom_retry_predicate}
+          max_retries: 10
+          backoff:
+            initial_delay: 2
+            max_delay: 120
+            multiplier: 1.5
+
+
+    - return_result:
+        return:
+          ticket_id: ${ticket_id}
+          cluster_id: ${cluster_id}
+          escalated: ${prepare_result.body.escalated}
+
+custom_retry_predicate:
+  params: [e]
+  steps:
+    - init:
+        assign:
+          - retry_codes: [429, 500, 502, 503, 504]
+    - check_connection_error:
+        switch:
+          - condition: ${"TypeError" in e.tags or "ConnectionError" in e.tags or "ConnectionFailedError" in e.tags or "DeadlineExceededError" in e.tags or "TimeoutError" in e.tags}
+            return: true
+    - check_status_code:
+        switch:
+          - condition: ${"HttpError" in e.tags and e.code in retry_codes}
+            return: true
+    - default_case:
+        return: false

@@ -34,7 +34,7 @@ if credentials_path:
 
 LOCATION = "us-east1"
 PROJECT_ID = os.getenv("GCP_PROJECT_ID")
-DATABASE_ID = os.getenv("FIRESTORE_DATABASE_ID", "epcfirestoredb")
+DATABASE_ID = os.getenv("FIRESTORE_DATABASE_ID", "epcdb")
 MODEL_NAME = os.getenv("GEMINI_MODEL_NAME", "gemini-3.1-flash")
 
 if not PROJECT_ID:
