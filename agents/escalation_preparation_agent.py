@@ -3,16 +3,53 @@ import json
 from datetime import datetime, timezone
 from dotenv import load_dotenv
 from google import genai
-from google.genai import types
-from google.cloud import firestore, bigquery
+import sys
+from google.cloud import firestore
 
-load_dotenv()
+sys.path.append("../rag")
+sys.path.append("../integrations")
+
+from hybrid_retrieval import hybrid_retrieve
+from drive_tool import get_drive_doc
+from gmail_tool import draft_gmail
+from discord_notifier import send_discord_alert
+
+from pathlib import Path
+# ==========================================================
+# Locate project root and load .env
+# ==========================================================
+
+script_path = Path(__file__).resolve()
+
+repo_root = None
+for parent in [script_path, *script_path.parents]:
+    if (parent / ".env").exists():
+        repo_root = parent
+        break
+
+if repo_root is None:
+    repo_root = script_path.parents[2]
+
+load_dotenv(repo_root / ".env")
+
+# ==========================================================
+# Auth: Application Default Credentials only.
+# Locally:    gcloud auth application-default login
+# Cloud Run:  uses its attached service account automatically
+# No service-account-key.json needed anywhere.
+# ==========================================================
+
+# ==========================================================
+# Configuration
+# ==========================================================
 
 PROJECT_ID = os.getenv("GCP_PROJECT_ID")
-LOCATION = os.getenv("GCP_LOCATION", "us-east1")
-DATABASE_ID = os.getenv("FIRESTORE_DATABASE_ID", "epcdb")
+LOCATION = "us-east1"
 MODEL_NAME = "gemini-2.5-flash"
-SIGNIFICANCE_THRESHOLD = 70
+DATABASE_ID = os.getenv("FIRESTORE_DATABASE_ID", "ebc-firestone")
+
+
+SIGNIFICANCE_THRESHOLD = 60
 
 REPORT_PROMPT_TEMPLATE = """
 You are preparing a business escalation report for a human reviewer.
@@ -23,30 +60,26 @@ Impact score: {impact_score}/100
 Severity: {severity}
 Scoring rationale: {rationale}
 
-Relevant historical incidents (for context only, may or may not be related):
+Relevant historical incidents:
 {historical_context}
+
+Relevant internal runbook excerpt (use only if genuinely applicable):
+{runbook_excerpt}
 
 Write a short escalation report in Markdown, under 200 words, with these sections:
 ## Problem
 ## Business Impact
 ## Recommended Action
 
-Be factual and concise. If a historical incident is genuinely relevant, reference it briefly.
+Be factual and concise. Reference the runbook or historical incidents only if truly relevant.
 """
 
-# Old SDK: vertexai.init(...) + GenerativeModel(MODEL_NAME)
-# New SDK: same Vertex AI backend (project ID + ADC auth, no API key),
-# through the updated google-genai client.
-client = genai.Client(vertexai=True, project=PROJECT_ID, location=LOCATION)
+client = genai.Client(
+    vertexai=True,
+    project=PROJECT_ID,
+    location=LOCATION,
+)
 db = firestore.Client(project=PROJECT_ID, database=DATABASE_ID)
-bq_client = bigquery.Client(project=PROJECT_ID)
-
-
-def get_all_historical_incidents() -> str:
-    query = "SELECT summary, outcome FROM `epcdatasetid.historical_incidents`"
-    rows = bq_client.query(query).result()
-    lines = [f"- {row.summary} (Outcome: {row.outcome})" for row in rows]
-    return "\n".join(lines)
 
 
 def prepare_escalation(cluster_id: str) -> dict | None:
@@ -57,7 +90,12 @@ def prepare_escalation(cluster_id: str) -> dict | None:
         print(f"{cluster_id}: below threshold ({cluster.get('impact_score', 0)}), skipping escalation.")
         return None
 
-    historical_context = get_all_historical_incidents()
+    top_matches = hybrid_retrieve(cluster["summary"])
+    historical_context = "\n".join(
+        f"- {m['summary']} (Outcome: {m['outcome']})" for m in top_matches
+    )
+
+    runbook_excerpt = get_drive_doc("Runbook")
 
     prompt = REPORT_PROMPT_TEMPLATE.format(
         summary=cluster["summary"],
@@ -66,6 +104,7 @@ def prepare_escalation(cluster_id: str) -> dict | None:
         severity=cluster["severity"],
         rationale=cluster.get("scoring_rationale", ""),
         historical_context=historical_context,
+        runbook_excerpt=runbook_excerpt[:500],
     )
 
     response = client.models.generate_content(
@@ -74,6 +113,19 @@ def prepare_escalation(cluster_id: str) -> dict | None:
     )
     report_markdown = response.text.strip()
 
+    gmail_draft_id = draft_gmail(
+        to_email="stakeholder@example.com",
+        subject=f"[EPC Platform] Escalation: {cluster['summary'][:60]}",
+        body=report_markdown,
+    )
+
+    discord_alert_text = (
+            f"🚨 New Escalation ({cluster['severity']})\n\n"
+            f"**Cluster:** {cluster_id}\n"
+            f"**Impact Score:** {cluster['impact_score']}/100\n"
+            f"**Summary:** {cluster['summary']}"
+        )
+
     escalation_doc = {
         "cluster_id": cluster_id,
         "report_markdown": report_markdown,
@@ -81,8 +133,16 @@ def prepare_escalation(cluster_id: str) -> dict | None:
         "impact_score": cluster["impact_score"],
         "created_at": datetime.now(timezone.utc).isoformat(),
         "review_status": "pending",
+        "gmail_draft_id": gmail_draft_id,
+        "discord_message": discord_alert_text,
     }
 
+    
+
+    send_discord_alert(
+        title="🚨 EPC Platform Escalation",
+        message=discord_alert_text,
+    )
     db.collection("escalations").document(cluster_id).set(escalation_doc)
     print(f"{cluster_id}: escalation report created.")
     return escalation_doc
