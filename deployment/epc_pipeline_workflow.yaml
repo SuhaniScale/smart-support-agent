@@ -10,17 +10,25 @@ main:
           - timestamp: ${input.timestamp}
 
     - extract_step:
-        call: http.post
-        args:
-          url: ${service_url + "/extract"}
-          body:
-            ticket_id: ${ticket_id}
-            raw_text: ${raw_text}
-            source: ${source}
-            timestamp: ${timestamp}
-        result: extract_result
+        try:
+          call: http.post
+          args:
+            url: ${service_url + "/extract"}
+            body:
+              ticket_id: ${ticket_id}
+              raw_text: ${raw_text}
+              source: ${source}
+              timestamp: ${timestamp}
+          result: extract_result
+        retry:
+          predicate: ${custom_retry_predicate}
+          max_retries: 10
+          backoff:
+            initial_delay: 2
+            max_delay: 120
+            multiplier: 1.5
 
-    - making_groups:
+    - assigning_groups:
         try:
           call: http.post
           args:
